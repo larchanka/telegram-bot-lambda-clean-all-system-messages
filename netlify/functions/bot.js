@@ -8,7 +8,6 @@ const bot = new TelegramBot(token);
 
 // Register a 'message' event handler
 bot.on('message', async msg => {
-  bot.sendMessage(msg.chat.id, 'hello');
   // Check if the message is a system message
   if (msg.new_chat_members || msg.left_chat_member || msg.group_chat_created || msg.supergroup_chat_created || msg.channel_chat_created || msg.migrate_to_chat_id || msg.migrate_from_chat_id || msg.pinned_message) {
     // Delete the message if it's a system message
