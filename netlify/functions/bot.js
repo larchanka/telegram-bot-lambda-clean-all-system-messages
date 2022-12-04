@@ -24,21 +24,19 @@ exports.handler = async (event, context, callback) => {
     // Parse the update from the request body
     const update = JSON.parse(body);
 
-    try {
-
     // Process the update using the bot
-      await bot.processUpdate(update);
+    await bot.processUpdate(update);
 
-      // Return a 200 response to acknowledge receipt of the update
-      callback(null, {
-        statusCode: 200,
-        body: 'OK'
-      });
-    } catch(err) {
-      callback(null, {
-        statusCode: 500,
-        body: 'NOTOK'
-      });
-    }
+    // Return a 200 response to acknowledge receipt of the update
+    const response = {
+      statusCode: 200,
+      body: 'OK'
+    };
+
+    // Encode the response as a JSON string
+    const responseBody = JSON.stringify(response);
+
+    // Return the response to the bot
+    callback(null, responseBody);
   }
 };
